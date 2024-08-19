@@ -59,6 +59,8 @@ showCollection(myCollection);
 showCollection(findByArtist(myCollection, 'Crumb'));
 showCollection(findByArtist(myCollection, 'Jane Remover'));
 showCollection(findByArtist(myCollection, 'The Breathing Effect'));
+console.log('Search function test:');
+showCollection(search(myCollection, {artist: 'Duster', yearPublished: '2023'}))
 
 
 
