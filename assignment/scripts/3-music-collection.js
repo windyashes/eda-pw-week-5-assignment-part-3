@@ -13,14 +13,29 @@ function addToCollection(collection, title, artist, yearPublished, tracks){
  collection.push(album);
  return album;
 }
-function showCollection(collection){
-  for(let i = 0; i < collection.length; i++){
-    console.log(`"${collection[i].title}" by ${collection[i].artist}, published in ${collection[i].yearPublished}`);
+// if showCollection is passed a boolean value of true, it will print out the track list.
+// If it is only passed an array or if the boolean value is false, then showCollection
+// will only print out the album's names, artists, and years published.
+function showCollection(collection, showTracklist){
+  if(collection.length === 0){
+    console.log('No collection to show.');
+    return;
+  }
+  if(showTracklist === undefined || showTracklist === false){
+    for(let i = 0; i < collection.length; i++){
+      console.log(`"${collection[i].title}" by ${collection[i].artist}, published in ${collection[i].yearPublished}`);
+    }
+  } else {
+    for(let i = 0; i < collection.length; i++){
+      console.log(`"${collection[i].title}" by ${collection[i].artist}, published in ${collection[i].yearPublished}
+      Tracklist:`);
+      showTracks(collection[i])
+    }
   }
 }
 function showTracks(album){
   for(let i = 0; i < album.tracks.length; i++){
-    console.log(album.tracks[i]);
+    console.log(`${i+1}. ${album.tracks[i].name} : ${album.tracks[i].duration}`);
   }
 }
 function findByArtist(collection, artist){
@@ -57,91 +72,89 @@ console.log(myCollection);
 // of ones I've listened to more recently, because if I put in every single album I like it would
 // take forever and there would probably end up being hundreds of lines of code lol
 addToCollection(myCollection, 'Census Designated', 'Jane Remover', '2023', tracks = [
-  'Cage Girl / Camgirl',
-  'Lips',
-  'Fling',
-  'Holding a Leech',
-  'Backseat Girl',
-  'Idling Somewhere',
-  'Always Have Always Will',
-  'Census Designated',
-  'Video',
-  'Contingency Song (Album Version)'
+ {name: 'Cage Girl / Camgirl', duration: ''},
+ {name: 'Lips', duration: ''},
+ {name: 'Fling', duration: ''},
+ {name: 'Holding a Leech', duration: ''},
+ {name: 'Backseat Girl', duration: ''},
+ {name: 'Idling Somewhere', duration: ''},
+ {name: 'Always Have Always Will', duration: ''},
+ {name: 'Census Designated', duration: ''},
+ {name:'Video', duration: ''},
+ {name: 'Contingency Song (Album Version)', duration: ''}
 ]);
 addToCollection(myCollection, 'Flash in the Pan', 'Jane Remover', '2024', tracks = [
-  'Flash in the Pan',
-  'Dream Sequence'
+  {name: 'Flash in the Pan', duration: ''},
+  {name: 'Dream Sequence', duration: ''}
 ]);
 addToCollection(myCollection, 'Remote Echoes', 'Duster', '2023', tracks = [
-  'Before the Veil',
-  'Cigarettes and Coffee',
-  'The Weed Supreme',
-  'Untitled 59',
-  'I Know I Won\'t',
-  'Moon In Aries',
-  'Glue',
-  'Testphase',
-  'Lost Time',
-  'Strange',
-  'The Mood',
-  'Country Heather',
-  'Untitled 84',
-  'Darby'
+  {name: 'Before the Veil', duration: ''},
+  {name: 'Cigarettes and Coffee', duration: ''},
+  {name: 'The Weed Supreme', duration: ''},
+  {name: 'Untitled 59', duration: ''},
+  {name: 'I Know I Won\'t', duration: ''},
+  {name: 'Moon In Aries', duration: ''},
+  {name: 'Glue', duration: ''},
+  {name: 'Testphase', duration: ''},
+  {name: 'Lost Time', duration: ''},
+  {name: 'Strange', duration: ''},
+  {name: 'The Mood', duration: ''},
+  {name: 'Country Heather', duration: ''},
+  {name: 'Untitled 84', duration: ''},
+  {name: 'Darby', duration: ''}
 ]);
 addToCollection(myCollection, 'Moods, Modes', 'Duster', '2023', tracks = [
-  'Orbitron',
-  'Fuzz and Timbre',
-  'My Friends are Cosmonauts',
-  'Closer to the Speed of Sound',
-  'Stars Will Fall',
-  'Light Years',
-  'Four Hours',
-  'Echo, Bravo',
-  'What You\'re Doing to Me'
+  {name: 'Orbitron', duration: ''},
+  {name: 'Fuzz and Timbre', duration: ''},
+  {name: 'My Friends are Cosmonauts', duration: ''},
+  {name: 'Closer to the Speed of Sound', duration: ''},
+  {name: 'Stars Will Fall', duration: ''},
+  {name: 'Light Years', duration: ''},
+  {name: 'Four Hours', duration: ''},
+  {name: 'Echo, Bravo', duration: ''},
+  {name: 'What You\'re Doing to Me', duration: ''}
 ]);
 addToCollection(myCollection, 'AMAMA', 'Crumb', '2024', tracks = [
-  'From Outside a Window Sill',
-  'Side By Side',
-  'The Bug',
-  'AMAMA',
-  'Genie',
-  'Crushxd',
-  'Nightly News',
-  '(Alone in) Brussels',
-  'Sleep Talk',
-  'Dust Bunny',
-  'Swarmed',
-  'XXX',
+  {name: 'From Outside a Window Sill', duration: ''},
+  {name: 'Side By Side', duration: ''},
+  {name: 'The Bug', duration: ''},
+  {name: 'AMAMA', duration: ''},
+  {name: 'Genie', duration: ''},
+  {name: 'Crushxd', duration: ''},
+  {name: 'Nightly News', duration: ''},
+  {name: '(Alone in) Brussels', duration: ''},
+  {name: 'Sleep Talk', duration: ''},
+  {name: 'Dust Bunny', duration: ''},
+  {name: 'Swarmed', duration: ''},
+  {name: 'XXX', duration: ''},
 ]);
-addToCollection(myCollection, 'King of Hearts', 'Camu Tao', '2010', tracks[
-  'Be a Big Girl',
-  'Bird Flu',
-  'Death',
-  'Fonny Valentine',
-  'Actin a Ass',
-  'Get at You',
-  'Ind of the Worl', //yes it's spelled that way
-  'Intervention',
-  'King of Hearts',
-  'Major Team',
-  'Plot a Little',
-  'The Moment',
-  'The Perfect Plan',
-  'Play O Run',
-  'When You\'re Going Down',
-  'Kill Me'
+addToCollection(myCollection, 'King of Hearts', 'Camu Tao', '2010', tracks = [
+  {name: 'Be a Big Girl', duration: ''},
+  {name: 'Bird Flu', duration: ''},
+  {name: 'Death', duration: ''},
+  {name: 'Fonny Valentine', duration: ''},
+  {name: 'Actin a Ass', duration: ''},
+  {name: 'Get at You', duration: ''},
+  {name: 'Ind of the Worl', duration: ''}, //yes it's spelled that way
+  {name: 'Intervention', duration: ''},
+  {name: 'King of Hearts', duration: ''},
+  {name: 'Major Team', duration: ''},
+  {name: 'Plot a Little', duration: ''},
+  {name: 'The Moment', duration: ''},
+  {name: 'The Perfect Plan', duration: ''},
+  {name: 'Play O Run', duration: ''},
+  {name: 'When You\'re Going Down', duration: ''},
+  {name: 'Kill Me', duration: ''}
 ]);
 console.log(myCollection);
 showCollection(myCollection);
 
-showCollection(findByArtist(myCollection, 'Crumb'));
-showCollection(findByArtist(myCollection, 'Jane Remover'));
-console.log('Showing tracklist for "Census Designated" by Jane Remover');  
-  showTracks(myCollection[0]);
-showCollection(findByArtist(myCollection, 'The Breathing Effect'));
-console.log('Search function test:');
+showCollection(findByArtist(myCollection, 'Crumb'), true);
+showCollection(findByArtist(myCollection, 'Jane Remover'), true);
+showCollection(findByArtist(myCollection, 'The Breathing Effect'), true);
+
   console.log('Searching for albums under Duster and 2023...');
-    showCollection(search(myCollection, {artist: 'Duster', yearPublished: '2023'}));
+    showCollection(search(myCollection, {artist: 'Duster', yearPublished: '2023'}), true);
 
 
 
