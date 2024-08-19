@@ -166,8 +166,10 @@ showCollection(myCollection);
 showCollection(findByArtist(myCollection, 'Crumb'), true);
 showCollection(findByArtist(myCollection, 'Jane Remover'), true);
 showCollection(findByArtist(myCollection, 'The Breathing Effect'), true);
+// Testing Search
   console.log('Searching for albums under Duster and 2023...');
     showCollection(search(myCollection, {artist: 'Duster', yearPublished: '2023'}), true);
+// Testing Search by Track
   console.log('Searching for albums with the track "XXX"...');
     showCollection(search(myCollection, undefined, 'XXX'), true);
 
