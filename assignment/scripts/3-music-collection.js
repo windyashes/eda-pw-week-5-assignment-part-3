@@ -25,8 +25,24 @@ function findByArtist(collection, artist){
       matches.push(collection[i]);
     }
   }
-  if(matches == []){
-    console.log('None found.');
+  return matches;
+}function search(collection, searchCriteria){
+  let matches = [];
+  if(searchCriteria === undefined || searchCriteria.artist === undefined || searchCriteria.yearPublished === undefined){
+    //checks if object has properties
+    return collection;
+  } else if (searchCriteria.artist === null || searchCriteria.yearPublished === null){
+    //checks if properties are set
+    return collection;
+  } else if (searchCriteria.artist === '' || searchCriteria.yearPublished === ''){
+    //checks if set properties are empty
+    return collection;
+  }
+
+  for(let i = 0; i < collection.length; i++){
+    if(collection[i].artist === searchCriteria.artist && collection[i].yearPublished === searchCriteria.yearPublished){
+      matches.push(collection[i]);
+    }
   }
   return matches;
 }
